@@ -66,6 +66,10 @@ function display(input) {
             break;
 
         case 'C':
+            if(output.innerHTML === 'NaN' || output.innerHTML === 'Infinity' || output.innerHTML === 'Error'){
+                output.innerHTML = "";
+                break;
+            }
             output.innerHTML = output.innerHTML.slice(0,-1);
             for(let i = 0; i<output.innerHTML.length; i++) {
                 if(output.innerHTML[i] != '.'){
@@ -75,6 +79,10 @@ function display(input) {
             break;
 
         case '-/+':
+            if(output.innerHTML === 'NaN' || output.innerHTML === 'Infinity' || output.innerHTML === 'Error'){
+                break;
+            }
+
             if(output.innerHTML[0] != '-'){
                 output.innerHTML = '-' + output.innerHTML;
             }
