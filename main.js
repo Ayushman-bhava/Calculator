@@ -6,10 +6,6 @@ let secondNo = 0;
 let flag = 0;
 let dotFlag = 0;
 
-function plus() {
-
-}
-
 function display(input) {
     switch(input) {
         case 'AC':
@@ -59,7 +55,12 @@ function display(input) {
 
         case '.':
             if(dotFlag === 0) {
-                output.innerHTML += '.';
+                if(output.innerHTML === '') {
+                    output.innerHTML += '0.'
+                }
+                else {
+                    output.innerHTML += '.';
+                }       
                 dotFlag++
             }
             break;
@@ -73,7 +74,7 @@ function display(input) {
             }
             break;
 
-        case 'pM':
+        case '-/+':
             if(output.innerHTML[0] != '-'){
                 output.innerHTML = '-' + output.innerHTML;
             }
@@ -137,7 +138,15 @@ function display(input) {
 
             dotFlag = 0;
             break;
+        
         default:
             output.innerHTML = 'Error';
     }
 }
+
+buttons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    const value = btn.textContent.trim();
+    display(value);
+  });
+});
