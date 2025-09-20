@@ -66,7 +66,7 @@ function display(input) {
             break;
 
         case 'C':
-            if(output.innerHTML === 'NaN' || output.innerHTML === 'Infinity' || output.innerHTML === 'Error'){
+            if(output.innerHTML === 'NaN' || output.innerHTML === 'Infinity' || output.innerHTML === 'Error' || output.innerHTML === '-Infinity'){
                 output.innerHTML = "";
                 break;
             }
@@ -79,16 +79,10 @@ function display(input) {
             break;
 
         case '-/+':
-            if(output.innerHTML === 'NaN' || output.innerHTML === 'Infinity' || output.innerHTML === 'Error'){
+            if(output.innerHTML === 'NaN' || output.innerHTML === 'Infinity' || output.innerHTML === 'Error' || output.innerHTML === '-Infinity' || output.innerHTML === ''){
                 break;
             }
-
-            if(output.innerHTML[0] != '-'){
-                output.innerHTML = '-' + output.innerHTML;
-            }
-            else {
-                output.innerHTML = output.innerHTML.slice(1);
-            }
+            output.innerHTML *= -1;
             break;
 
         case '+':
@@ -121,9 +115,7 @@ function display(input) {
 
         case '%':
             firstNo = output.innerHTML;
-            flag = 5;
-            dotFlag = 0;
-            output.innerHTML = '';
+            output.innerHTML = Number(firstNo) / 100;
             break;
 
         case '=':
@@ -139,9 +131,6 @@ function display(input) {
             }
             else if(flag === 4){
                 output.innerHTML = Number(firstNo) / Number(secondNo);
-            }
-            else if(flag === 5){
-                output.innerHTML = Number(firstNo) % Number(secondNo);
             }
 
             dotFlag = 0;
